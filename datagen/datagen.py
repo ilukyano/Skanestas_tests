@@ -51,13 +51,13 @@ def gendata():
 kafka_broker_list=os.environ.get('kafka_broker_list', 'localhost:9093')
 topicName=os.environ.get('topicName', 'defaultTopicName')
 
-producer = KafkaProducer(bootstrap_servers = kafka_broker_list)
-producer = KafkaProducer()
+#producer = KafkaProducer(bootstrap_servers = kafka_broker_list)
+#producer = KafkaProducer()
 
-ack = producer.send(topicName, b'Hello World!!!!!!!!')
-metadata = ack.get()
-print(metadata.topic)
-print(metadata.partition)
+#ack = producer.send(topicName, b'Hello World!!!!!!!!')
+#metadata = ack.get()
+#print(metadata.topic)
+#print(metadata.partition)
 
 
 while True:
