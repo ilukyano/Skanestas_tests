@@ -48,11 +48,11 @@ def gendata():
         jnew['stats']['askavg']=askavg # same as above
         return jnew
 
-kbl=os.environ.get('kafka_broker_list', 'localhost:9093')
+kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
 tn=os.environ.get('topicName', 'defaultTopicName')
 
 producer = KafkaProducer(bootstrap_servers = kbl)
-producer = KafkaProducer()
+#producer = KafkaProducer()
 
 while True:
     i=gendata()
