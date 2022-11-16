@@ -50,7 +50,7 @@ def gendata():
 
 bootstrap_servers = ['stage-dbs02.vprok.tech:9093']
 topicName = 'skanestas'
-producer = KafkaProducer(bootstrap_servers = bootstrap_servers, api_version=(0,1,0))
+producer = KafkaProducer(bootstrap_servers = bootstrap_servers)
 producer = KafkaProducer()
 
 ack = producer.send(topicName, b'Hello World!!!!!!!!')
