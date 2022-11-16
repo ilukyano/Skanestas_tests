@@ -4,6 +4,9 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./datagen
+    environment:
+      kafka_broker_list: kafka:9092
+      topicName: skanestas
     restart: always
     hostname: py_app
     depends_on: 
