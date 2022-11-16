@@ -1,5 +1,10 @@
 version: '3.1'
 services:
+  py_app:
+    image: python:3.9.15-slim
+    restart: always
+    hostname: py_app
+
   clickhouse:
     image: yandex/clickhouse-server
     volumes:
