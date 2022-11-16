@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<yandex>
+  <macros>
+    <layer>1</layer>
+    <shard_id>1</shard_id>
+    <replica_id>1</replica_id>
+  </macros>
+</yandex>
