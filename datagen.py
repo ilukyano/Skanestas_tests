@@ -1,6 +1,7 @@
 import random
 import json
 import os,re,datetime,statistics,time
+from kafka.producer import KafkaProducer
 
 initDDL="DDL.json"
 initPATH=os.path.dirname(__file__)
@@ -47,10 +48,21 @@ def gendata():
         jnew['stats']['askavg']=askavg # same as above
         return jnew
 
-while True:
-    i=gendata()
-    print(i)
-    time.sleep(1)
+bootstrap_servers = ['stage-dbs02.vprok.tech:9093']
+topicName = 'skanestas'
+producer = KafkaProducer(bootstrap_servers = bootstrap_servers, api_version=(0,1,0))
+producer = KafkaProducer()
+
+ack = producer.send(topicName, b'Hello World!!!!!!!!')
+metadata = ack.get()
+print(metadata.topic)
+print(metadata.partition)
+
+
+#while True:
+#    i=gendata()
+#    print(i)
+#    time.sleep(1)
 
        # print(i)
        # print(jdata[i])
