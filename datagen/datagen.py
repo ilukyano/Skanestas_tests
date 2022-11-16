@@ -51,19 +51,15 @@ def gendata():
 kbl=os.environ.get('kafka_broker_list', 'localhost:9093')
 tn=os.environ.get('topicName', 'defaultTopicName')
 
-#producer = KafkaProducer(bootstrap_servers = kbl)
-#producer = KafkaProducer()
-
-#ack = producer.send(tn, b'Hello World!!!!!!!!')
-#metadata = ack.get()
-#print(metadata.topic)
-#print(metadata.partition)
-
+producer = KafkaProducer(bootstrap_servers = kbl)
+producer = KafkaProducer()
 
 while True:
     i=gendata()
-    print(i)
-    print(kbl, "----", tn, "---eee")
+    ack = producer.send(tn, i)
+    metadata = ack.get()
+    print(metadata.topic)
+    print(metadata.partition)
     time.sleep(1)
 
        # print(i)
