@@ -62,6 +62,7 @@ tn=os.environ.get('topicName', 'defaultTopicName')
 
 while True:
     i=gendata()
+    print(i)
     print(kbl, "----", tn, "---eee")
     time.sleep(1)
 
