@@ -1,7 +1,9 @@
 version: '3.1'
 services:
   py_app:
-    build: ./datagen/Dockerfile
+    build:
+      dockerfile: Dockerfile
+      context: ./datagen
     restart: always
     hostname: py_app
 
