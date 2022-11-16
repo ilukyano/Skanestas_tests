@@ -59,7 +59,7 @@ while True:
     metadata = ack.get()
     print(metadata.topic)
     print(metadata.partition)
-    time.sleep(1)
+    time.sleep(1/1000)
 
        # print(i)
        # print(jdata[i])
