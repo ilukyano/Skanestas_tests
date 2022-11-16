@@ -48,7 +48,7 @@ def gendata():
         jnew['stats']['askavg']=askavg # same as above
         return jnew
 
-bootstrap_servers = ['stage-dbs02.vprok.tech:9093']
+bootstrap_servers = ['172.20.40.88:9093']
 topicName = 'skanestas'
 producer = KafkaProducer(bootstrap_servers = bootstrap_servers, api_version=(0,1,0))
 producer = KafkaProducer()
