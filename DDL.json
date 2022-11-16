@@ -1,0 +1,8 @@
+{"timestamp": "unix timestamp",
+"bid_01":   "float",
+"bid_02":   "float",
+"bid_50":   "float",
+"ask_01":   "float",
+"ask_02":   "float",
+"ask_50":   "float",
+"stats":    "json"}
