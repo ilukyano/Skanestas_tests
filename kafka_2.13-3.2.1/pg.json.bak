@@ -1,0 +1,35 @@
+{
+  "name": "pg-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "plugin.name": "pgoutput",
+    "database.hostname": "std-base02.services.lab.x5.ru",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "123qweasd",
+    "database.dbname" : "shop_main",
+    "database.server.name": "pg",
+    "table.include.list": "public.cache,public.entity",
+    "heartbeat.interval.ms": "5000",
+    "slot.name": "shop_main_debezium",
+    "publication.name": "shop_main_publication",
+    "snapshot.mode": "initial",
+    "snapshot.locking.mode": "none",
+    "transforms": "route.public.cache,
+                   route.public.entity,
+                   unwrap",
+
+    "transforms.route.public.cache.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.route.public.cache.regex": "pg.public.cache",
+    "transforms.route.public.cache.replacement": "cdc.shop_main.public.cache",
+
+    "transforms.route.public.entity.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.route.public.entity.regex": "pg.public.entity",
+    "transforms.route.public.entity.replacement": "cdc.shop_main.public.entity",
+
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "false",
+    "key.converter.schemas.enable": "true",
+    "value.converter.schemas.enable": "true"
+  }
+}

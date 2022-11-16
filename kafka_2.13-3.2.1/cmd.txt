@@ -1,0 +1,12 @@
+
+
+curl -i -X POST -H "Accept:application/json"  -H  "Content-Type:application/json"  http://localhost:8083/connectors/ -d @pg.json
+
+curl -i -X DELETE localhost:8083/connectors/pg-connector
+
+curl -i -X GET localhost:8083/connectors
+
+
+
+./bin/kafka-consumer-groups.sh --bootstrap-server 127.0.0.1:9093 --list
+./bin/kafka-consumer-groups.sh --bootstrap-server 127.0.0.1:9093 --delete --group grp1

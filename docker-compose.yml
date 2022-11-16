@@ -1,0 +1,87 @@
+version: '3.1'
+
+services:
+  zoo1:
+    image: zookeeper
+    restart: always
+    hostname: zoo1
+#    ports:
+#      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+
+  zoo2:
+    image: zookeeper
+    restart: always
+    hostname: zoo2
+#    ports:
+#      - 2182:2181
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+
+  zoo3:
+    image: zookeeper
+    restart: always
+    hostname: zoo3
+#    ports:
+#      - 2183:2181
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+
+  kafka:
+    image: bitnami/kafka
+    ports:
+#      - "9092:9092"
+      - "9093:9093"
+    volumes:
+      - "./kafka_data:/bitnami:rw"
+    environment:
+#      - KAFKA_LISTENER_NAME_SASL_PLAINTEXT_PLAIN_SASL_JAAS_CONFIG="org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin\" user_admin=\"admin\";"
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=IBL:PLAINTEXT,INTERNAL:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=IBL
+      - KAFKA_ZOOKEEPER_CONNECT=zoo1:2181,zoo2:2181,zoo3:2181
+      - KAFKA_LISTENERS=INTERNAL://:9092,IBL://:9093
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,IBL://stage-dbs02.vprok.tech:9093
+      - KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL=PLAINTEXT
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_HEAP_OPTS=-Xms1G -Xmx8G
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    restart: unless-stopped  
+  
+  debezium:
+    image: debezium/connect
+    #build: .
+    links:
+      - kafka
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - "./TimestampConverter-1.2.4-SNAPSHOT.jar:/kafka/connect/debezium-connector-postgres/TimestampConverter-1.2.4-SNAPSHOT.jar"
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
+      GROUP_ID: "debezium"
+      CONFIG_STORAGE_TOPIC: config_stor
+      OFFSET_STORAGE_TOPIC: ofset_stor 
+      CONNECT_STATUS_STORAGE_TOPIC: status_stor
+      HEAP_OPTS: "-Xms1G -Xmx8G"
+      CONNECT_CLEANUP_POLICY: compact
+      CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
+#      CONNECT_SASL_MECHANIZM: PLAIN
+#      CONNECT_SECURITY_PROTOCOL: SASL_PLAINTEXT
+#      CONNECT_SASL_JAAS_CONFIG: "org.apache.kafka.common.security.plain.PlainLoginModule required serviceName=\"Kafka\" username=\"admin\" password=\"admin\";"
+    depends_on: 
+      - kafka
+      - zoo1
+      - zoo2
+      - zoo3
+    ports:
+      - 8083:8083
+    restart: unless-stopped
