@@ -55,7 +55,7 @@ producer = KafkaProducer(bootstrap_servers = kbl)
 
 while True:
     i=gendata()
-    ack = producer.send(topic=tn, value=i)
+    ack = producer.send(topic=tn, bytes(i, encoding='utf-8'))
     metadata = ack.get()
     print(metadata.topic)
     print(metadata.partition)
