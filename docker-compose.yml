@@ -49,7 +49,7 @@ services:
 #      - "9092:9092"
       - "9093:9093"
     volumes:
-      - "./kafka_data:/bitnami:rw"
+      - "./kafka/kafka_data:/bitnami:rw"
     environment:
 #      - KAFKA_LISTENER_NAME_SASL_PLAINTEXT_PLAIN_SASL_JAAS_CONFIG="org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin\" user_admin=\"admin\";"
       - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=IBL:PLAINTEXT,INTERNAL:PLAINTEXT
