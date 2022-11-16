@@ -8,13 +8,13 @@
           <host>clickhouse01</host>
           <port>9000</port>
           <user>default</user>
-          <password>Il127001</password>
+          <password>123qweasd</password>
         </replica>
         <replica>
           <host>clickhouse02</host>
           <port>9000</port>
           <user>default</user>
-          <password>Il127001</password>
+          <password>123qweasd</password>
         </replica>
       </shard>
     </skanestas>
