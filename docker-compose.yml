@@ -14,15 +14,16 @@ services:
     depends_on: 
       - kafka
 
-  clickhouse:
+  clickhouse01:
     image: yandex/clickhouse-server
     volumes:
       - ./ch/ch_data:/var/lib/clickhouse
-      - ./ch/ch_cfg/config.xml:/etc/clickhouse-server/config.xml
+      - ./ch/clickhouse01/config.xml:/etc/clickhouse-server/config.xml
+      - ./ch/clickhouse01/clickhouse_remote_servers.xml:/etc/clickhouse-server/config.d/clickhouse_remote_servers.xml
     ulimits:
       nofile: 262144
     restart: always
-    hostname: clickhouse
+    hostname: clickhouse01
     ports:
       - 8123:8123
       - 9000:9000
