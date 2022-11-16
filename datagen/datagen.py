@@ -46,7 +46,7 @@ def gendata():
         askavg=statistics.mean(asklist) # same as above
         jnew['stats']['bidavg']=bidavg # add avg stats
         jnew['stats']['askavg']=askavg # same as above
-        return jnew
+        return jnew.__str__()
 
 kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
 tn=os.environ.get('topicName', 'defaultTopicName')
