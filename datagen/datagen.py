@@ -46,7 +46,7 @@ def gendata():
         askavg=statistics.mean(asklist) # same as above
         jnew['stats']['bidavg']=bidavg # add avg stats
         jnew['stats']['askavg']=askavg # same as above
-        return jnew.__str__()
+        return jnew
 
 kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
 tn=os.environ.get('topicName', 'defaultTopicName')
@@ -54,8 +54,8 @@ tn=os.environ.get('topicName', 'defaultTopicName')
 producer = KafkaProducer(bootstrap_servers = kbl)
 
 while True:
-    i=gendata()
-    ack = producer.send(topic=tn, bytes(i, encoding='utf-8'))
+    i=gendata().__str__()
+    ack = producer.send(topic=tn, i)
     metadata = ack.get()
     print(metadata.topic)
     print(metadata.partition)
