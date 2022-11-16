@@ -3,7 +3,7 @@ services:
   clickhouse:
     image: yandex/clickhouse-server
     volumes:
-      - ./ch/ch_date:/var/lib/clickhouse
+      - ./ch/ch_data:/var/lib/clickhouse
       - ./ch/ch_cfg/config.xml:/etc/clickhouse-server/config.xml
     ulimits:
       nofile: 262144
