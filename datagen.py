@@ -47,7 +47,7 @@ def gendata():
 while True:
     i=gendata()
     print(i)
-    time.sleep(1/1000)
+    time.sleep(1)
 
        # print(i)
        # print(jdata[i])
