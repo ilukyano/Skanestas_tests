@@ -52,11 +52,10 @@ kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
 tn=os.environ.get('topicName', 'defaultTopicName')
 
 producer = KafkaProducer(bootstrap_servers = kbl)
-#producer = KafkaProducer()
 
 while True:
     i=gendata()
-    ack = producer.send(tn, b'gggggggggggggg gggggg')
+    ack = producer.send(tn, b'%d' % i)
     metadata = ack.get()
     print(metadata.topic)
     print(metadata.partition)
