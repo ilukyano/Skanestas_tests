@@ -48,6 +48,8 @@ def gendata():
         jnew['stats']['askavg']=askavg # same as above
         return jnew
 
+
+
 kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
 tn=os.environ.get('topicName', 'defaultTopicName')
 
@@ -57,9 +59,9 @@ while True:
     i=gendata().__str__()
     ack = producer.send(topic=tn, value=bytes(i, encoding='utf-8'))
     metadata = ack.get()
-    print(metadata.topic)
-    print(metadata.partition)
-    time.sleep(1/1000)
+    #print(metadata.topic)
+    #print(metadata.partition)
+    time.sleep(1)
 
        # print(i)
        # print(jdata[i])
