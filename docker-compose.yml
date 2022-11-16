@@ -1,6 +1,18 @@
 version: '3.1'
-
 services:
+  clickhouse:
+    image: yandex/clickhouse-server
+    volumes:
+      - ./ch/ch_date:/var/lib/clickhouse
+      - ./ch/ch_cfg/config.xml:/etc/clickhouse-server/config.xml
+    ulimits:
+      nofile: 262144
+    restart: always
+    hostname: clickhouse
+    ports:
+      - 8123:8123
+    restart: unless-stopped
+
   zoo1:
     image: zookeeper
     restart: always
