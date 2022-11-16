@@ -60,10 +60,10 @@ topicName=os.environ.get('topicName', 'defaultTopicName')
 #print(metadata.partition)
 
 
-#while True:
-#    i=gendata()
-#    print(i)
-#    time.sleep(1)
+while True:
+    i=gendata()
+    print(i)
+    time.sleep(1)
 
        # print(i)
        # print(jdata[i])
