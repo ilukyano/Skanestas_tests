@@ -21,6 +21,9 @@ def gendata():
                 dig=float(substr) # do digit
                 inthigh=dig*10 # set high edge for rand
                 rnd = random.randint(1,inthigh)
+                if rnd!=inthigh:
+                    rnd=rnd+random.random()
+                rnd=float(rnd)
                 jnew[i]=rnd
                 cntfieldname=i[:3] # get float field names
                 if cntfieldname=='bid':
