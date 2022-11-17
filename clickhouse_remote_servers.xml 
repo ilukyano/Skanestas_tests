@@ -11,7 +11,7 @@
         </replica>
         <replica>
           <host>clickhouse02</host>
-          <port>9001</port>
+          <port>9000</port>
           <user>default</user>
           <password>123qweasd</password>
         </replica>
