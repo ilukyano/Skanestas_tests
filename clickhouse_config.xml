@@ -375,6 +375,8 @@
     <!-- <disable_internal_dns_cache>1</disable_internal_dns_cache> -->
 
     <kafka>
+      <debug>cgrp</debug>
+      <auto_offset_reset>smallest</auto_offset_reset>
     </kafka>
 
 
