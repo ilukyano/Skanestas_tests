@@ -27,10 +27,6 @@ services:
       - ./clickhouse_macros.xml:/etc/clickhouse-server/config.d/macros.xml:rw
     ulimits:
       nofile: 262144
-    environment:
-      LAYER_ID: 1
-      REPLICA_ID: 1
-      SHARD_ID: 1
     restart: always
     hostname: clickhouse01
     ports:
