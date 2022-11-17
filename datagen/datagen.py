@@ -41,11 +41,11 @@ def gendata():
                        unix_timestamp = datetime.datetime.timestamp(nowDate)*1000
                        jnew[i]=unix_timestamp
                 if jdata[i]=='json':
-                    jnew[i]={}
+                    jnew[i]=22
         bidavg=statistics.mean(bidlist) # calc avg stats
         askavg=statistics.mean(asklist) # same as above
-        jnew['stats']['bidavg']=bidavg # add avg stats
-        jnew['stats']['askavg']=askavg # same as above
+        #jnew['stats']['bidavg']=bidavg # add avg stats
+        #jnew['stats']['askavg']=askavg # same as above
         return jnew
 
 
