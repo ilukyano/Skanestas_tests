@@ -52,8 +52,8 @@ services:
     restart: always
     hostname: clickhouse02
     ports:
-      - 8123:8123
-      - 9000:9000
+      - 8124:8123
+      - 9001:9000
     restart: unless-stopped
 
   zoo1:
