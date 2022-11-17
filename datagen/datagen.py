@@ -7,6 +7,7 @@ initDDL="DDL.json"
 initPATH=os.path.dirname(__file__)
 #print(initPATH)
 initAPF=os.path.join(initPATH, initDDL) #abs path file
+sleep=int(os.environ.get("gen_rate"))/1000
 #print(initAPF)
 
 def gendata():
@@ -60,14 +61,13 @@ kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
 tn=os.environ.get('topicName', 'defaultTopicName')
 
 producer = KafkaProducer(bootstrap_servers = kbl)
-
 while True:
     i=gendata()
     ack = producer.send(topic=tn, value=bytes(i, encoding='utf-8'))
     metadata = ack.get()
     #print(metadata.topic)
     #print(metadata.partition)
-    time.sleep(os.environ.get("gen_rate")/1000)
+    time.sleep(sleep)
 
        # print(i)
        # print(jdata[i])
