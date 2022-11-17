@@ -25,7 +25,7 @@ def gendata():
                 if rnd!=inthigh:
                     rnd=rnd+random.random()
                 rnd=float(rnd)
-                jnew[i]=rnd
+                jnew[i]=rnd.__str__()
                 cntfieldname=i[:3] # get float field names
                 if cntfieldname=='bid':
                     #print(cntfieldname)
