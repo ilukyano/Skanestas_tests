@@ -1,7 +1,9 @@
-<clickhouse>
-    <macros>
-        <replica_id>1</replica_id>
-        <layer_id>1</layer_id>
-        <shard_id>1</shard_id>
-    </macros>
-</clickhouse>
+<yandex>  
+  <clickhouse>
+      <macros>
+         <replica_id>1</replica_id>
+         <layer_id>1</layer_id>
+         <shard_id>1</shard_id>
+     </macros>
+  </clickhouse>
+</yandex>
