@@ -4,4 +4,4 @@
        <layer_id>1</layer_id>
        <shard_id>1</shard_id>
      </macros>
-  </clickhouse>
+</clickhouse>
