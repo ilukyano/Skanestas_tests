@@ -1,7 +1,7 @@
 <clickhouse>
     <macros>
-        <replica_id from_env="REPLICA_ID" />
-        <layer_id from_env="LAYER_ID" />
-        <shard_id from_env="SHARD_ID" />
+        <replica_id>1</replica_id>
+        <layer_id>1</layer_id>
+        <shard_id>1</shard_id>
     </macros>
 </clickhouse>
