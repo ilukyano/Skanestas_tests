@@ -18,7 +18,7 @@ services:
     image: yandex/clickhouse-server
     volumes:
       - ${PWD}/ch/ch_data:/var/lib/clickhouse:rw
-      - ${PWD}/ch/clickhouse01/config.xml:/etc/clickhouse-server/:rw   
+      - ${PWD}/ch/clickhouse01/config.xml: /etc/clickhouse-server/
      # - ./ch/clickhouse01/users.xml:/etc/clickhouse-server/users.xml
      # - ./ch/clickhouse01/clickhouse_remote_servers.xml:/etc/clickhouse-server/config.d/clickhouse_remote_servers.xml
      # - ./ch/clickhouse01/macros.xml:/etc/clickhouse-server/config.d/macros.xml
