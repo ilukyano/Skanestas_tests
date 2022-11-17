@@ -18,13 +18,13 @@ services:
     image: yandex/clickhouse-server
     volumes:
       - type: bind
-        source: ./ch/ch_data
-        target: /var/lib/clickhouse
-        read_only: false
+        source: "./ch/ch_data"
+        target: "/var/lib/clickhouse"
+        read_only: "false"
       - type: bind
-        source: ./ch/clickhouse01/config.xml
-        target: /etc/clickhouse-server/config.xml
-        read_only: true
+        source: "./ch/clickhouse01/config.xml"
+        target: "/etc/clickhouse-server/config.xml"
+        read_only: "true"
      # - ./ch/clickhouse01/users.xml:/etc/clickhouse-server/users.xml
      # - ./ch/clickhouse01/clickhouse_remote_servers.xml:/etc/clickhouse-server/config.d/clickhouse_remote_servers.xml
      # - ./ch/clickhouse01/macros.xml:/etc/clickhouse-server/config.d/macros.xml
