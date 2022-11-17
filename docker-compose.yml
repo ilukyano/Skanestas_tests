@@ -9,7 +9,7 @@ services:
     environment:
       kafka_broker_list: kafka:9092
       topicName: skanestas
-      gen_rate: 5000 # rate of generation of nums in milliseconds
+      gen_rate: 500 # rate of generation of nums in milliseconds
     restart: always
     hostname: py_app
     depends_on: 
