@@ -16,7 +16,7 @@ services:
 
   clickhouse01:
     image: yandex/clickhouse-server
-    #volumes:
+    volumes:
       - ./ch/ch_data:/var/lib/clickhouse
       - ./ch/clickhouse01/config.xml:/etc/clickhouse-server/config.xml
      # - ./ch/clickhouse01/users.xml:/etc/clickhouse-server/users.xml
