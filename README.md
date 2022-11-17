@@ -7,3 +7,7 @@ kafka catalog needs chown -R 1001:1001 /path/to/project/kafka
 
 DDL for clickhouse in root project catalog
 (need to automize bash||python)
+
+in docker-composer.yml you can set gen rate (service: py_app gen_rate variable) i leave comment
+
+
