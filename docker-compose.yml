@@ -16,6 +16,8 @@ services:
 
   clickhouse01:
     image: yandex/clickhouse-server
+    links:
+      - kafka
     volumes:
       - ./ch/ch_data:/var/lib/clickhouse:rw
       - ./clickhouse_config.xml:/etc/clickhouse-server/config.xml:rw
