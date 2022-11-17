@@ -9,13 +9,12 @@
           <user>default</user>
           <password>123qweasd</password>
         </replica>
-  <!--      <replica>
+        <replica>
           <host>clickhouse02</host>
           <port>9000</port>
           <user>default</user>
           <password>123qweasd</password>
         </replica>
-  -->
       </shard>
     </skanestas>
   </remote_servers>
