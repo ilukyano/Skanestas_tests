@@ -17,11 +17,11 @@ services:
   clickhouse01:
     image: yandex/clickhouse-server
     volumes:
-      - type: bind
+      - type: "bind"
         source: "./ch/ch_data"
         target: "/var/lib/clickhouse"
         read_only: "false"
-      - type: bind
+      - type: "bind"
         source: "./ch/clickhouse01/config.xml"
         target: "/etc/clickhouse-server/config.xml"
         read_only: "true"
