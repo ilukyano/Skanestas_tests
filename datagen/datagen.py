@@ -5,10 +5,10 @@ from kafka.producer import KafkaProducer
 
 initDDL="DDL.json"
 initPATH=os.path.dirname(__file__)
-#print(initPATH)
 initAPF=os.path.join(initPATH, initDDL) #abs path file
 sleep=int(os.environ.get("gen_rate"))/1000
-#print(initAPF)
+kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
+tn=os.environ.get('topicName', 'defaultTopicName')
 
 def gendata():
     with open(initAPF) as jdata: # opening ddl.json
@@ -54,11 +54,9 @@ def gendata():
         jnew['stats']=a
         #jnew['stats']['bidavg']=bidavg # add avg stats
         #jnew['stats']['askavg']=askavg # same as above
+        jnew['ask_01_bid_01_avg']=(jnew['ask_01']+jnew['bid_01'])/2
         s=jnew.__str__().replace("'", "\"")
         return s
-
-kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
-tn=os.environ.get('topicName', 'defaultTopicName')
 
 producer = KafkaProducer(bootstrap_servers = kbl)
 while True:
