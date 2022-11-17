@@ -17,6 +17,7 @@ services:
 
   clickhouse01:
     image: yandex/clickhouse-server
+    user: "${UID}"
     links:
       - kafka
     volumes:
@@ -67,6 +68,7 @@ services:
 
   kafka:
     image: bitnami/kafka
+    user: "${UID}"
     ports:
       #- "9092:9092"
       - "9093:9093"
@@ -87,7 +89,20 @@ services:
       - zoo2
       - zoo3
     restart: unless-stopped  
-  
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    user: "${UID}"
+    environment:
+      kafka_broker_list: kafka:9092
+    restart: always
+    hostname: grafana
+    ports:
+      - 3000:3000
+    depends_on: 
+      - clickhouse01
+
+
 #   debezium:
 #     image: debezium/connect
 #     #build: .
