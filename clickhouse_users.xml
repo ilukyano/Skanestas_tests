@@ -25,6 +25,7 @@
                 <networks incl="networks" replace="replace">
                 <ip>::1</ip>
                 <ip>127.0.0.1</ip>
+                <network>0.0.0.0/0</network>
                 <host>clickhouse01</host>
                 <host>clickhouse02</host>
                 </networks>
