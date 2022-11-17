@@ -18,10 +18,10 @@ services:
     image: yandex/clickhouse-server
     volumes:
       - ./ch/ch_data:/var/lib/clickhouse:rw
-      - ./ch_config.xml:/etc/clickhouse-server/ch_config:rw
-      - ./ch_users.xml:/etc/clickhouse-server/users.xml
-     # - ./ch/clickhouse01/clickhouse_remote_servers.xml:/etc/clickhouse-server/config.d/clickhouse_remote_servers.xml
-     # - ./ch/clickhouse01/macros.xml:/etc/clickhouse-server/config.d/macros.xml
+      - ./clickhouse_config.xml:/etc/clickhouse-server/config.xml:rw
+      - ./clickhouse_users.xml:/etc/clickhouse-server/users.xml
+      - ./clickhouse_remote_servers.xml:/etc/clickhouse-server/config.d/clickhouse_remote_servers.xml
+      - ./clickhouse_macros.xml:/etc/clickhouse-server/config.d/macros.xml
     ulimits:
       nofile: 262144
     restart: always
