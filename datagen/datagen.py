@@ -67,7 +67,7 @@ while True:
     metadata = ack.get()
     #print(metadata.topic)
     #print(metadata.partition)
-    time.sleep(os.environ.get(gen_rate)/1000)
+    time.sleep(os.environ.get("gen_rate")/1000)
 
        # print(i)
        # print(jdata[i])
