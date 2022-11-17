@@ -24,7 +24,7 @@ def gendata():
                 rnd = random.randint(1,inthigh)
                 if rnd!=inthigh:
                     rnd=rnd+random.random()
-                rnd=float(rnd)
+                rnd=float(rnd).__str__()
                 jnew[i]=rnd
                 cntfieldname=i[:3] # get float field names
                 if cntfieldname=='bid':
@@ -39,9 +39,9 @@ def gendata():
                 if jdata[i]=='unix timestamp':
                        nowDate = datetime.datetime.now()
                        unix_timestamp = datetime.datetime.timestamp(nowDate)*1000
-                       jnew[i]=unix_timestamp
+                       jnew[i]=unix_timestamp.__str__()
                 if jdata[i]=='json':
-                    jnew[i]=33 #{}
+                    jnew[i]=33.__str__() #{}
         bidavg=statistics.mean(bidlist) # calc avg stats
         askavg=statistics.mean(asklist) # same as above
         #jnew['stats']['bidavg']=bidavg # add avg stats
