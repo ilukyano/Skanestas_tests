@@ -44,14 +44,15 @@ def gendata():
                     jnew[i]={}
         bidavg=statistics.mean(bidlist) # calc avg stats
         askavg=statistics.mean(asklist) # same as above
-        #a=[]
-        #b={}
+        a=[]
+        b={}
         #b["bidavg"]=bidavg
         #b["askavg"]=askavg
-        #a.append(b)
-        #jnew['stats']=a
-        jnew['stats']['bidavg']=bidavg # add avg stats
-        jnew['stats']['askavg']=askavg # same as above
+        a.append(bidavg)
+        a.append(askavg)
+        jnew['stats']=a
+        #jnew['stats']['bidavg']=bidavg # add avg stats
+        #jnew['stats']['askavg']=askavg # same as above
         s=jnew.__str__().replace("'", "\"")
         return s
 
