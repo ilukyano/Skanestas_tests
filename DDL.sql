@@ -28,12 +28,12 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS skanestas.skanestas_tests_mv ON CLUSTER s
 TO skanestas.skanestas_tests AS SELECT * FROM skanestas.skanestas_tests_queue
 
 
-drop table if exists skanestas.skanestas_tests_queue ON CLUSTER skanestas
-drop table if exists skanestas.skanestas_tests_sharded ON CLUSTER skanestas
-drop table if exists skanestas.skanestas_tests ON CLUSTER skanestas
-drop table if exists skanestas.skanestas_tests_mv ON CLUSTER skanestas
+-- drop table if exists skanestas.skanestas_tests_queue ON CLUSTER skanestas
+-- drop table if exists skanestas.skanestas_tests_sharded ON CLUSTER skanestas
+-- drop table if exists skanestas.skanestas_tests ON CLUSTER skanestas
+-- drop table if exists skanestas.skanestas_tests_mv ON CLUSTER skanestas
 
-
+select cast(timestamp as datetime),* from  skanestas.skanestas_tests
 select * from  skanestas.skanestas_tests
 select * from  skanestas.skanestas_tests_mv
 select * from  skanestas.skanestas.skanestas_tests_queue
