@@ -8,7 +8,8 @@ CREATE DATABASE if not exists skanestas on cluster skanestas
    `ask_01` Float64,
    `ask_02` Float64,
    `ask_50` Float64,
-   `stats` Array(Float64)
+   `stats` Array(Float64),
+   `ask_01_bid_01_avg` Float64
   ) ENGINE = Kafka
   SETTINGS kafka_broker_list = 'kafka:9092',
            kafka_topic_list = 'skanestas',
