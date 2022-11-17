@@ -25,7 +25,7 @@ def gendata():
                 if rnd!=inthigh:
                     rnd=rnd+random.random()
                 rnd=float(rnd)
-                jnew[i]=rnd
+                jnew[i]=rnd.__str__()
                 cntfieldname=i[:3] # get float field names
                 if cntfieldname=='bid':
                     #print(cntfieldname)
@@ -39,9 +39,9 @@ def gendata():
                 if jdata[i]=='unix timestamp':
                        nowDate = datetime.datetime.now()
                        unix_timestamp = datetime.datetime.timestamp(nowDate)*1000
-                       jnew[i]=unix_timestamp
+                       jnew[i]=unix_timestamp.__str__()
                 if jdata[i]=='json':
-                    jnew[i]=33.0
+                    jnew[i]='33.0'
         bidavg=statistics.mean(bidlist) # calc avg stats
         askavg=statistics.mean(asklist) # same as above
         #jnew['stats']['bidavg']=bidavg # add avg stats
@@ -57,7 +57,7 @@ producer = KafkaProducer(bootstrap_servers = kbl)
 
 while True:
     i=gendata().__str__()
-    ack = producer.send(topic=tn, value=bytes(i.__str__(), encoding='utf-8'))
+    ack = producer.send(topic=tn, value=bytes(i, encoding='utf-8'))
     metadata = ack.get()
     #print(metadata.topic)
     #print(metadata.partition)
