@@ -39,7 +39,7 @@ def gendata():
             else:
                 if jdata[i]=='unix timestamp':
                        nowDate = datetime.datetime.now()
-                       unix_timestamp = datetime.datetime.timestamp(nowDate)/1000
+                       unix_timestamp = datetime.datetime.timestamp(nowDate)
                        jnew[i]=unix_timestamp
                 if jdata[i]=='json':
                     jnew[i]={}
