@@ -19,9 +19,9 @@ services:
     volumes:
       - ./ch/ch_data:/var/lib/clickhouse:rw
       - ./clickhouse_config.xml:/etc/clickhouse-server/config.xml:rw
-      - ./clickhouse_users.xml:/etc/clickhouse-server/users.xml
-      - ./clickhouse_remote_servers.xml:/etc/clickhouse-server/config.d/clickhouse_remote_servers.xml
-      - ./clickhouse_macros.xml:/etc/clickhouse-server/config.d/macros.xml
+      - ./clickhouse_users.xml:/etc/clickhouse-server/users.xml:rw
+      - ./clickhouse_remote_servers.xml:/etc/clickhouse-server/config.d/clickhouse_remote_servers.xml:rw
+      - ./clickhouse_macros.xml:/etc/clickhouse-server/config.d/macros.xml:rw
     ulimits:
       nofile: 262144
     restart: always
