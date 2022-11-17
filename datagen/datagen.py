@@ -39,7 +39,7 @@ def gendata():
                 if jdata[i]=='unix timestamp':
                        nowDate = datetime.datetime.now()
                        unix_timestamp = datetime.datetime.timestamp(nowDate)*1000
-                       jnew[i]=unix_timestamp
+                       jnew[i]=unix_timestamp.__str__()
                 if jdata[i]=='json':
                     jnew[i]='22'
         bidavg=statistics.mean(bidlist) # calc avg stats
