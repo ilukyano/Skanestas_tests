@@ -15,7 +15,7 @@ services:
       - kafka
 
   clickhouse01:
-    image: yandex/clickhouse-server:21.12.4.1
+    image: yandex/clickhouse-server
     links:
       - kafka
     volumes:
