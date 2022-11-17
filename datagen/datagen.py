@@ -56,8 +56,6 @@ def gendata():
         s=jnew.__str__().replace("'", "\"")
         return s
 
-
-
 kbl=os.environ.get('kafka_broker_list', 'localhost:9092')
 tn=os.environ.get('topicName', 'defaultTopicName')
 
@@ -69,7 +67,7 @@ while True:
     metadata = ack.get()
     #print(metadata.topic)
     #print(metadata.partition)
-    time.sleep(3)
+    time.sleep(os.environ.get(gen_rate)/1000)
 
        # print(i)
        # print(jdata[i])
