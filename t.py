@@ -1,6 +1,7 @@
 import clickhouse_connect
 import datetime
 import logging
+import os,json
 
 #client = clickhouse_connect.get_client(host='stage-dbs02.vprok.tech', port=8123, username='default', password='123qweasd')
 #result = client.query("select host_name, host_address from system.clusters where cluster='skanestas'")
@@ -34,7 +35,6 @@ def cluster(): #Собираем все ноды кластера
 def check_db():
     nodes=cluster()
     query='%s%s%s' %("select name from system.databases where name='",ch_db,"'" )
-    print("sss")
     for i in nodes:
         ch_addr=i[0]
         res=clickhouse(ch_addr, ch_port, ch_user, ch_pass, query) #Проверяем есть ли БД на ноде
@@ -44,10 +44,6 @@ def check_db():
     
 def check_table():
     query='%s%s%s' %("select name from system.tables where database='",ch_db,"'" )
-    
-
-    
-
 
 
 main()    
